@@ -51,18 +51,17 @@ A53247710\\
 \begin{abstract}
 We present an algorithm and its implementation of detection and tracking of multiple vehicles using a mounted camera inside a self-driving car applying Kalman filter. It was developed as an application of Kalman filter and is intended to provide convenience for automatic car driving in real world. Tracking is done by combining prediction and correction process with a
 Kalman filter. No ground plane
-assumption is made. The resulting system runs at frame rate or higher, and produces excellent estimates of multiple tracked vehicle. We used TensorFlow Object Detection API, which is an open source framework built on top of TensorFlow to construct, train and deploy object detection models. previous CVPR abstracts to get a feel for style and length.
+assumption is made. The resulting system runs at frame rate or higher, and produces excellent estimates of multiple tracked vehicle. We used TensorFlow Object Detection API, which is an open source framework built on top of TensorFlow to construct, train and deploy object detection models.
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
 \section{Introduction}
 
-Within the last few years, research into intelligent vehicles has expanded into applications that work with or for the human user. Human-factors research is merging with intelligent-vehicle technology to create a new generation of driver-assistance systems that go beyond automated control systems by attempting to work in harmony with a human operator. Tracking objects in image sequences is an important task for
+Within the last few years, research into automatic vehicles has expanded into applications that work with or for the human user. Tracking objects in image sequences is an important task for
 vehicle guidance, following moving objects or to obtain a description
 of an environment. We need promote the accuracy of car tracking to provide convenience for car driving. In most systems the first step in
 tracking objects is to separate the foreground from the background
-or to detect motion. This means to detect the regions
-(apparent shape) of independently moving objects regardless
+or to detect motion. This means to detect the areas of independently moving objects regardless
 of their speed, direction or texture. In this work we illustrate the detection and tracking of multiple vehicles using a mounted camera inside a self-driving car. 
 
 The data we use is a set of video taken by the dashcam in front of our car, which is real and reliable. The data was taken in our daily life, including different situations: no cars, one car, more than one cars in the visual area. The cars in the video have several typical behaviours including intersection and overtaking.
@@ -70,10 +69,9 @@ The data we use is a set of video taken by the dashcam in front of our car, whic
 This paper first initializes a detector for sensing target maneuvers and then develops the combination of the estimator, detector, and a Kalman filter to form a tracker for maneuvering targets. The detector localizes the vehicles in each video frame, the tracker is then updated with the detection results. Finally the tracking results are annotated and displayed in a video frame.
 
 Section 2 gives a brief introduction to the Kalman filter theory
-and how to apply it to the background estimation problem.
-Extensions of the background estimator used so far are given
-in Section 3. Results are presented in Section 4. Concluding
-remarks are given in Section 5.
+and how to apply it to the multiple cars tracking problem and the algorithm and technique we used.
+Data association and track management are given
+in Section 3. Results and corresponding analysis are presented in Section 4.
 
 %------------------------------------------------------------------------
 \section{Algorithm and technique}
@@ -156,20 +154,21 @@ ObjectionID & Objection \\
 \end{table}
 %-------------------------------------------------------------------------
 \subsubsection{Car detection}
-AS mentioned above, the model SSD has been trained and can detect the object. In our project, we only care about the objects related to transportation. The inputs are the frames of the video. After passing the SSD model, we have three key outputs: (1) objection ID; (2) bounding box information; (3) confidence score. Then we need to judge the output whether it is satisfy our requirement. The detecting object is car with ID(3). Because we want tracking the cars with close distance, the bounding box needs to be big enough and has appropriate ratio(4*3). Besides, the confidence score shows how correct the detection is, which need to above 0.3. The flow chart is shown as figure \ref{fig:2_1_2}.\\
-\begin{figure}[t]
+As mentioned above, the model SSD has been trained and can detect the object. In our project, we only care about the objects related to transportation. The inputs are the frames of the video. After passing the SSD model, we have three key outputs: (1) objection ID; (2) bounding box information; (3) confidence score. Then we need to judge the output whether it is satisfy our requirement. The detecting object is car with ID(3). Because we want tracking the cars with close distance, the bounding box needs to be big enough and has appropriate ratio(4*3). Besides, the confidence score shows how correct the detection is, which need to above 0.3. The flow chart is shown as figure \ref{fig:2_1_2}. The result of SSD detection given a frame in the video is shown in figure \ref{fig:2_1_3}.
+
+\begin{figure}[!h]
 \begin{center}
    \includegraphics[width=0.9\linewidth]{ssd_chart}
 \end{center}
    \caption{Flow chart of SSD}
 \label{fig:2_1_2}
 \end{figure}
-The behavior of SSD detection are shown in figure \ref{fig:2_1_3}.
+
 \begin{figure}[t]
 \begin{center}
    \includegraphics[width=0.9\linewidth]{ssd_consequence}
 \end{center}
-   \caption{Flow chart of SSD}
+   \caption{Result of SSD}
 \label{fig:2_1_3}
 \end{figure}
 %-------------------------------------------------------------------------
@@ -314,7 +313,7 @@ For convenience, we call the prediction boxes trackers, and call the detection b
 \begin{center}
    \includegraphics[width=0.4\linewidth]{3_1_1.png}
 \end{center}
-   \caption{A simple example of IoU matrix with 3 trackers ($T_1$ to $T_3$ and 4 detections ($D_1$ to $D_4$)}
+   \caption{A simple example of IoU matrix with 3 trackers ($T_1$ to $T_3$) and 4 detections ($D_1$ to $D_4$)}
 \label{fig:3_1_1}
 \end{figure}
 
@@ -325,9 +324,9 @@ After obtaining the IoU matrix of trackers and detections, we can use Hungarian 
 Since our input is a video, we need to capture each frame of the video. This can be done by Python MoviePy package. And then we can obtain the \emph{matched}, \emph{unmatched\_detections} and \emph{unmatched\_trackers} list for each frame using Hungarian assignment. 
 
 \subsubsection{Hits and losses}
-The accuracy of SSD is certainly not 100\%, so there will false alarm and missed detection for each frames. False alarm happens when there is a detection box produced by SSD, but in fact there is no car in the bounding box. Missed detection happens when there is a car in the current frame, but there are no matched detection boxes. These two situations can harm the performance of the system. 
+The accuracy of SSD is certainly not 100\%, so there will be false alarm and missed detection for each frames. False alarm happens when there is a detection box produced by SSD, but in fact there is no car in the bounding box. Missed detection happens when there is a car in the current frame, but there are no matched detection boxes. These two situations can harm the performance of the system. 
 
-In order to solve this, we introduce two important parameters, \emph{min\_hits} and \emph{max\_losses} . We call a tracker has one hit if we have a matched detection and tracker. We call a tracker has one loss if the tracker doesn’t have a matched detection. Using the previous IoU matrix as an example, $T_1$ and $T_2$ has one hit, and $T_3$ has one loss. \emph{Min\_hits} is a constant, standing for the minimum number of consecutive matches to establish a tracker. Similarly, \emph{max\_losses} stands for the maximum number of consecutive losses to delete a current tracker. 
+In order to solve this, we introduce two important parameters, \emph{min\_hits} and \emph{max\_losses} . A tracker has one hit if we have a matched detection and tracker. A tracker has one loss if the tracker does not have a matched detection. Using the previous IoU matrix as an example, $T_1$ and $T_2$ have one hit, and $T_3$ has one loss. \emph{Min\_hits} is a constant, standing for the minimum number of consecutive matches to establish a tracker. Similarly, \emph{max\_losses} stands for the maximum number of consecutive losses to delete a current tracker. 
 
 We also introduce another variable to discriminate false alarm and real target. A tracker is called \emph{good tracker} if it has reached \emph{min\_hits}.
 
@@ -350,13 +349,13 @@ The inputs are the current frame extracted from the given video, and tracker lis
 \item For each tracker in \emph{unmatched\_tracker} list, There are no detection results, so we only perform time update, then set its hits to 0, and add 1 to its total number of losses. 
 \end{itemize}
 
-In this way we obtain an updated tracker list. And for each tracker in the tracker list, we can judge if the tracker is lost based on the statistics of the hits and losses of the tracker and whether the trackers is a good tracker. For good tracker, the algorithm will track the good tracker for a longer time compared with false alarms (which is bad tracker). If the tracker is lost, we can delete the tracker from the tracker list. Then its ID can be reused for later trackers.
+In this way we obtain an updated tracker list. And for each tracker in the tracker list, we can judge if the tracker is lost based on the statistics of the hits and losses of the tracker and whether the trackers is a good tracker. For good tracker, the algorithm will track it for a longer time compared with false alarms (which is bad tracker). If the tracker is lost, we can delete the tracker from the tracker list. Then its ID can be reused for later trackers.
 
 
 %------------------------------------------------------------------------
 \section{Results and Analysis}
 
-Our project achieved several important functionalities, which are tracking one or more cars and assign stable ids separately, removing tracking result in the opposite direction, dealing with car overtaking situation. 
+Our project achieved several important functionalities, which are tracking one or more cars and assign stable ids separately, removing tracking result in the opposite direction, and dealing with car overtaking situation. 
 
 Under the situation that there are cars in the opposite direction, which is unnecessary to track. For automatic driving purpose, cars in the same direction lanes are objects we need to avoid with higher priority.   Some
 typical images are shown in figure \ref{fig:4_1} to \ref{fig:4_6}.
@@ -394,7 +393,7 @@ typical images are shown in figure \ref{fig:4_1} to \ref{fig:4_6}.
 \end{figure}
 
 
-Our project can make prediction according to the detection result, as shown in \ref{fig:4_1} and \ref{fig:4_2}. In \ref{fig:4_3}, the tracking result of the car in the opposite direction lane disappeared since we set a parameter minhits which needs to be meet to establish a tracker. So the car in the opposite direction which has few appearances can not fulfill the minimum number of consecutive matches to establish a tracker. From the video demo result of detection and tracking, there is a benefit of applying kalman filter which is that even without a consecutive detection, which means the detection is unstable and would disappear in some frames, we can still get a stable and consecutive tracking result. \ref{fig:4_4} shows another main functionality of our project, which are tracking multiple targets and assigning different ids for them. 
+Our project can make prediction according to the detection result, as shown in figure \ref{fig:4_1} and figure \ref{fig:4_2}. In figure \ref{fig:4_3}, the tracking result of the car in the opposite direction lane disappeared since we set a parameter minhits which needs to be meet to establish a tracker. So the car in the opposite direction which has few appearances can not fulfill the minimum number of consecutive matches to establish a tracker. From the video demo result of detection and tracking, there is a benefit of applying kalman filter which is that even without a consecutive detection, which means the detection is unstable and would disappear in some frames, we can still get a stable and consecutive tracking result. \ref{fig:4_4} shows another main functionality of our project, which are tracking multiple targets and assigning different ids for them. 
 
 \begin{figure}[t]
 \begin{center}
@@ -412,7 +411,7 @@ Our project can make prediction according to the detection result, as shown in \
 \label{fig:4_6}
 \end{figure}
 
-In the video demo, the black car is going to overtake the white car. From the comparison of \ref{fig:4_5} and \ref{fig:4_6}, it is obvious to conclude that the id of the black car remains unchanged. The white car’s id changed because it has disappeared for a while when the black car blocked it. This tracking results shows that as long as the car keep showing up in our camera view, we can always track it and assign a very stable id for it.
+In the video demo, the black car is going to overtake the white car. From the comparison of figure \ref{fig:4_5} and figure \ref{fig:4_6}, it is obvious to conclude that the id of the black car remains unchanged. The white car’s id changed because it has disappeared for a while when the black car blocked it. This tracking results shows that as long as the car keep showing up in our camera view, we can always track it and assign a very stable id for it.
 
 \newpage
 {\small

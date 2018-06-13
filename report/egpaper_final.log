@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  12 JUN 2018 23:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  13 JUN 2018 12:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -361,61 +361,60 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 81.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
+<model1.png, id=5, 304.13625pt x 114.4275pt>
+File: model1.png Graphic file (type png)
+<use model1.png>
+Package pdftex.def Info: model1.png  used on input line 108.
+(pdftex.def)             Requested size: 237.13594pt x 89.22165pt.
  [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-<model1.png, id=18, 304.13625pt x 114.4275pt>
-File: model1.png Graphic file (type png)
-<use model1.png>
-Package pdftex.def Info: model1.png  used on input line 110.
-(pdftex.def)             Requested size: 237.13594pt x 89.22165pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 118--130
+Underfull \hbox (badness 10000) in paragraph at lines 116--128
 
  []
 
-<ssd_chart.png, id=22, 611.886pt x 271.2534pt>
+<ssd_chart.png, id=23, 611.886pt x 271.2534pt>
 File: ssd_chart.png Graphic file (type png)
 <use ssd_chart.png>
-Package pdftex.def Info: ssd_chart.png  used on input line 162.
+Package pdftex.def Info: ssd_chart.png  used on input line 161.
 (pdftex.def)             Requested size: 213.4209pt x 94.60898pt.
 <ssd_consequence.png, id=24, 433.62pt x 325.215pt>
 File: ssd_consequence.png Graphic file (type png)
 <use ssd_consequence.png>
-Package pdftex.def Info: ssd_consequence.png  used on input line 170.
+Package pdftex.def Info: ssd_consequence.png  used on input line 169.
 (pdftex.def)             Requested size: 213.4209pt x 160.06636pt.
 [2 <./model1.png> <./ssd_chart.png>]
 <kalman_r.png, id=43, 433.62pt x 325.215pt>
 File: kalman_r.png Graphic file (type png)
 <use kalman_r.png>
-Package pdftex.def Info: kalman_r.png  used on input line 292.
+Package pdftex.def Info: kalman_r.png  used on input line 291.
 (pdftex.def)             Requested size: 213.4209pt x 160.06636pt.
  [3 <./ssd_consequence.png>]
 <3_1_1.png, id=64, 845.1575pt x 665.48625pt>
 File: 3_1_1.png Graphic file (type png)
 <use 3_1_1.png>
-Package pdftex.def Info: 3_1_1.png  used on input line 315.
+Package pdftex.def Info: 3_1_1.png  used on input line 314.
 (pdftex.def)             Requested size: 94.85292pt x 74.68626pt.
  [4 <./kalman_r.png> <./3_1_1.png>]
 <3_3_1.png, id=86, 7257.1125pt x 12667.325pt>
 File: 3_3_1.png Graphic file (type png)
 <use 3_3_1.png>
-Package pdftex.def Info: 3_3_1.png  used on input line 339.
+Package pdftex.def Info: 3_3_1.png  used on input line 338.
 (pdftex.def)             Requested size: 237.13594pt x 413.82869pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 348.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 347.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 348.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 347.
 <__1.png, id=89, 433.62pt x 325.215pt>
 File: __1.png Graphic file (type png)
 <use __1.png>
-Package pdftex.def Info: __1.png  used on input line 366.
+Package pdftex.def Info: __1.png  used on input line 365.
 (pdftex.def)             Requested size: 237.13594pt x 177.85152pt.
 
 
@@ -424,7 +423,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <__2.png, id=90, 433.62pt x 325.215pt>
 File: __2.png Graphic file (type png)
 <use __2.png>
-Package pdftex.def Info: __2.png  used on input line 374.
+Package pdftex.def Info: __2.png  used on input line 373.
 (pdftex.def)             Requested size: 237.13594pt x 177.85152pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -432,7 +431,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <__3.png, id=91, 433.62pt x 325.215pt>
 File: __3.png Graphic file (type png)
 <use __3.png>
-Package pdftex.def Info: __3.png  used on input line 382.
+Package pdftex.def Info: __3.png  used on input line 381.
 (pdftex.def)             Requested size: 237.13594pt x 177.85152pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -440,7 +439,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <__4.png, id=92, 433.62pt x 325.215pt>
 File: __4.png Graphic file (type png)
 <use __4.png>
-Package pdftex.def Info: __4.png  used on input line 390.
+Package pdftex.def Info: __4.png  used on input line 389.
 (pdftex.def)             Requested size: 237.13594pt x 177.85152pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -448,29 +447,29 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <overtake1.PNG, id=97, 370.986pt x 183.68625pt>
 File: overtake1.PNG Graphic file (type png)
 <use overtake1.PNG>
-Package pdftex.def Info: overtake1.PNG  used on input line 401.
+Package pdftex.def Info: overtake1.PNG  used on input line 400.
 (pdftex.def)             Requested size: 237.13594pt x 117.41302pt.
 <overtake2.PNG, id=98, 382.42876pt x 184.2885pt>
 File: overtake2.PNG Graphic file (type png)
 <use overtake2.PNG>
-Package pdftex.def Info: overtake2.PNG  used on input line 409.
+Package pdftex.def Info: overtake2.PNG  used on input line 408.
 (pdftex.def)             Requested size: 237.13594pt x 114.27455pt.
 [5 <./3_3_1.png>] (./egpaper_final.bbl [6 <./__1.png> <./__2.png> <./__3.png> <
 ./__4.png> <./overtake1.PNG>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 423.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
  [7
 
  <./overtake2.PNG>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 423.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
  (./egpaper_final.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 423.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 423.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 423.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 422.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
  ) 
 Here is how much of TeX's memory you used:
  6339 strings out of 492649
  90922 string characters out of 6129622
- 185979 words of memory out of 5000000
+ 185976 words of memory out of 5000000
  10067 multiletter control sequences out of 15000+600000
  28073 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -489,7 +488,7 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf
 nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
 urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on egpaper_final.pdf (7 pages, 3724739 bytes).
+Output written on egpaper_final.pdf (7 pages, 3724542 bytes).
 PDF statistics:
  188 PDF objects out of 1000 (max. 8388607)
  140 compressed objects within 2 object streams
