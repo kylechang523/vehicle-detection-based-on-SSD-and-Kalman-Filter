@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: egpaper_final.aux
+The style file: ieee.bst
+Database file #1: egbib.bib
+Warning--string name "july" is undefined
+--line 5 of file egbib.bib
+I was expecting a `,' or a `}'---line 5 of file egbib.bib
+ :  year = july 
+ :              24,2016
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 13 of file egbib.bib
+ : year = dec 
+ :            29, 2016
+I'm skipping whatever remains of this entry
+Name 1 in "Wei Liu, Dragomir Anguelov, Dumitru Erhan, and Christian Szegedy" has a comma at the end for entry SSD
+while executing---line 1072 of file ieee.bst
+Name 1 in "Greg Welch, and Gary Bishop" has a comma at the end for entry Kalman
+while executing---line 1072 of file ieee.bst
+Name 1 in "Wei Liu, Dragomir Anguelov, Dumitru Erhan, and Christian Szegedy" has a comma at the end for entry SSD
+while executing---line 1115 of file ieee.bst
+Name 1 in "Greg Welch, and Gary Bishop" has a comma at the end for entry Kalman
+while executing---line 1115 of file ieee.bst
+You've used 4 entries,
+            2120 wiz_defined-function locations,
+            520 strings with 4226 characters,
+and the built_in function-call counts, 1079 in all, are:
+= -- 106
+> -- 40
+< -- 0
++ -- 18
+- -- 12
+* -- 66
+:= -- 189
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 18
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 39
+empty$ -- 92
+format.name$ -- 12
+if$ -- 218
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 3
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 21
+preamble$ -- 1
+purify$ -- 14
+quote$ -- 0
+skip$ -- 29
+stack$ -- 0
+substring$ -- 66
+swap$ -- 4
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 0
+while$ -- 12
+width$ -- 5
+write$ -- 43
+(There were 6 error messages)

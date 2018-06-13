@@ -1,0 +1,23 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{Hungarian1}
+H.~W. Kuhn.
+\newblock The hungarian method for the assignment problem.
+\newblock {\em Naval Research Logistics Quarterly}, 2(1):83--97, 1955.
+
+\bibitem{Hungarian2}
+H.~W. Kuhn.
+\newblock Variants of the hungarian method for assignment problems.
+\newblock {\em Naval Research Logistics Quarterly}, 3(1):253--258, 1956.
+
+\bibitem{SSD}
+D.~E. Wei~Liu, Dragomir~Anguelov and C.~Szegedy.
+\newblock Ssd: Single shot multibox detector.
+\newblock {\em Computer Vision and Pattern Recognition (cs.CV)}, Dec.
+
+\bibitem{Kalman}
+G.~Welch and G.~Bishop.
+\newblock An introduction to the kalman filter.
+\newblock University of North Carolina at Chapel Hill Chapel Hill.
+
+\end{thebibliography}
